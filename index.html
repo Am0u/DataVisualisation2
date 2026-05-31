@@ -1,0 +1,893 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Australia on Fire: Understanding the Bushfire Crisis</title>
+  <script src="https://cdn.jsdelivr.net/npm/vega@5"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vega-lite@5"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vega-embed@6"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<!-- ═══════════════════════════════════════════ HERO ═══ -->
+<section class="hero">
+  <h1>Australia on <span>Fire</span></h1>
+  <p class="hero-subtitle">Understanding the forces behind Australia's escalating bushfire crisis: from the catastrophic Black Summer to a warming climate.</p>
+  <div class="stat-grid">
+    <div class="stat-card">
+      <div class="stat-number">18.6M</div>
+      <div class="stat-label">Hectares burnt in 2019–20</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-number">3B+</div>
+      <div class="stat-label">Animals affected</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-number">3,094</div>
+      <div class="stat-label">Buildings destroyed</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-number">+1.52°C</div>
+      <div class="stat-label">2019 temperature anomaly</div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════ SECTION 1: MAP ═══ -->
+<section class="section">
+  <div class="section-inner">
+    <p class="section-tag">Where did fire strike?</p>
+    <h2>A Nation Scorched</h2>
+    <div class="divider"></div>
+    <p class="lead">The 2019–20 bushfire season — dubbed "Black Summer" — was unprecedented in scale. New South Wales alone lost more land to fire than the total area of Ireland. The map below shows how severely each state was affected.</p>
+
+    <div class="grid-2">
+      <div class="chart-card">
+        <div class="chart-label">Geographic overview &middot; Map 1</div>
+        <div class="chart-title">Area Burnt by State — 2019–20 Black Summer</div>
+        <div id="map1"></div>
+        <p class="chart-note">Source: AFAC, State Rural Fire Services 2020. Circle size and colour both encode area burnt (thousand ha). NT excluded — its savanna fires follow a distinct, annual cycle unrelated to the eastern fire crisis.</p>
+      </div>
+      <div class="chart-card">
+        <div class="chart-label">State comparison &middot; Chart 1</div>
+        <div class="chart-title">Hectares Burnt by State, 2019–20 (Thousands)</div>
+        <div id="bar1"></div>
+        <p class="chart-note">Source: ABARES, State RFS Reports 2020. NSW was the worst-affected state, burning more than four times the area of Victoria, the second most-affected.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════ SECTION 2: HISTORY ═══ -->
+<section class="section section-alt">
+  <div class="section-inner">
+    <p class="section-tag">Has it always been this bad?</p>
+    <h2>The Burning Gets Worse</h2>
+    <div class="divider"></div>
+    <p class="lead">Australian bushfires are natural. But the scale and severity of recent seasons is dramatically beyond historical norms. The 2019–20 season burned more than seven times the annual average for south-eastern Australia.</p>
+
+    <div class="chart-card">
+      <div class="chart-label">Long-term trend &middot; Chart 2</div>
+      <div class="chart-title">Annual Forest Area Burnt — South-Eastern Australia, 1999 to 2021 (Thousand Hectares)</div>
+      <div id="line1"></div>
+      <p class="chart-note">Source: ABARES State of the Forests Reports (various years). Covers NSW, VIC, SA, ACT and TAS. Figures are approximate estimates combining multiple ABARES reports.</p>
+    </div>
+
+    <div class="callout">
+      <h3>Why Black Summer Was Different</h3>
+      <p>Australian forests have always burned. But three factors converged in 2019–20 to create a catastrophe of a different order: <strong>record heat</strong> (Australia's hottest year on record at +1.52°C above average), <strong>severe drought</strong> (following three years of below-average rainfall), and <strong>an early start</strong>  (fire season began in August, three months before its historical norm) The result was fires that could not be controlled, and a season that burned for over 240 days.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════ SECTION 3: BLACK SUMMER ═══ -->
+<section class="section">
+  <div class="section-inner">
+    <p class="section-tag">Month by month</p>
+    <h2>Black Summer Unfolds</h2>
+    <div class="divider"></div>
+    <p class="lead">The 2019–20 season began earlier than any in living memory and kept burning into autumn. The cumulative area chart below shows how fire accumulated in New South Wales — month by month — across the season.</p>
+
+    <div class="grid-2">
+      <div class="chart-card">
+        <div class="chart-label">Season timeline &middot; Chart 3</div>
+        <div class="chart-title">Cumulative Area Burnt in NSW. August 2019 to March 2020</div>
+        <div id="area1"></div>
+        <p class="chart-note">Source: NSW Rural Fire Service, AFAC Situation Reports 2019–20. January 2020 was the most destructive single month, coinciding with catastrophic fire danger declarations across the state.</p>
+      </div>
+      <div class="chart-card">
+        <div class="chart-label">Season comparison &middot; Chart 4</div>
+        <div class="chart-title">Total National Area Burnt by Fire Season. 2016–17 to 2020–21</div>
+        <div id="bar2"></div>
+        <p class="chart-note">Source: ABARES, <em>Fires in Australia's Forests 2016–21</em> (2024). The 2019–20 season burned more than six times the area of the next worst season in this five-year period.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════ SECTION 4: SEASONAL ═══ -->
+<section class="section section-alt">
+  <div class="section-inner">
+    <p class="section-tag">Seasonal patterns</p>
+    <h2>When Does Fire Strike?</h2>
+    <div class="divider"></div>
+    <p class="lead">Fire danger in Australia peaks at different times depending on the region. Southern states face extreme fire risk in summer; northern Queensland and Western Australia face elevated danger in the dry season (July–October). Understanding these patterns helps communities prepare.</p>
+
+    <div class="chart-card">
+      <div class="chart-label">Seasonal heatmap &middot; Chart 5</div>
+      <div class="chart-title">Average Fire Danger Level by State and Month</div>
+      <div id="heatmap1"></div>
+      <p class="chart-note">Source: Bureau of Meteorology, Forest Fire Danger Index (FFDI) climatology. Scale: 1 = Low–Moderate, 2 = High, 3 = Very High, 4 = Severe, 5 = Extreme–Catastrophic. Based on 1993–2023 average FFDI climatology data.</p>
+    </div>
+
+    <div class="chart-card">
+      <div class="chart-label">Monthly distribution &middot; Chart 6</div>
+      <div class="chart-title">Average Number of Significant Fire Incidents by Month — Australia-wide</div>
+      <div id="bar3"></div>
+      <p class="chart-note">Source: AFAC Annual Fire Reports 2014–2020. Bars show the average number of significant fire incidents per month across Australia. The summer peak (November–January) is driven primarily by south-eastern states; the winter peak (August–September) reflects early season activity in Queensland and WA.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════ SECTION 5: HUMAN COST ═══ -->
+<section class="section">
+  <div class="section-inner">
+    <p class="section-tag">The human and ecological toll</p>
+    <h2>More Than Statistics</h2>
+    <div class="divider"></div>
+    <p class="lead">Behind the hectare figures are real homes, communities, and ecosystems. Black Summer directly killed 33 people and destroyed over 3,000 buildings. Beyond the built environment, ecologists estimated that <strong style="color: var(--accent-light);">3 billion animals</strong> were killed or displaced — one of the largest single-event wildlife disasters ever recorded.</p>
+
+    <div class="grid-2">
+      <div class="chart-card">
+        <div class="chart-label">Property loss &middot; Chart 7</div>
+        <div class="chart-title">Homes Destroyed by State — 2019–20 Season</div>
+        <div id="dot1"></div>
+        <p class="chart-note">Source: State Emergency Services, AFAC National Situation Report, March 2020. NSW accounted for 79% of all residential buildings destroyed nationally.</p>
+      </div>
+      <div class="chart-card">
+        <div class="chart-label">Wildlife impact &middot; Chart 8</div>
+        <div class="chart-title">Estimated Animals Killed or Displaced by Group (Millions)</div>
+        <div id="bar4"></div>
+        <p class="chart-note">Source: WWF Australia / University of Sydney, <em>"3 Billion Animals"</em> report (Wintle et al., 2020). Estimates include animals killed directly by fire and those that died due to habitat loss and subsequent starvation in affected areas.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════ SECTION 6: CLIMATE ═══ -->
+<section class="section section-alt">
+  <div class="section-inner">
+    <p class="section-tag">The climate connection</p>
+    <h2>A Warming Continent</h2>
+    <div class="divider"></div>
+    <p class="lead">Australia has warmed by approximately 1.4°C since 1910. Rising temperatures directly increase fire danger: they dry out fuels faster, extend the fire season, and create conditions where fires burn hotter and spread further. The connection between warming and fire risk is clear — and growing.</p>
+
+    <div class="chart-card">
+      <div class="chart-label">Seven decades of warming &middot; Chart 9</div>
+      <div class="chart-title">Australian Temperature Anomaly, Year by Year (1950–2023)</div>
+      <div id="stripes1"></div>
+      <p class="chart-note">Source: Bureau of Meteorology, Annual Climate Summaries (1950–2023). Each vertical stripe represents one year, coloured by its mean temperature anomaly versus the 1961–1990 baseline — blue = cooler, red = hotter. The shift from predominantly cool stripes in the mid-20th century to a wall of red in the 21st makes the warming trajectory legible at a glance.</p>
+    </div>
+
+    <div class="chart-card">
+      <div class="chart-label">Recent detail &middot; Chart 10</div>
+      <div class="chart-title">Australia's Annual Mean Temperature Anomaly vs. 1961–1990 Baseline (°C)</div>
+      <div id="scatter1"></div>
+      <p class="chart-note">Source: Bureau of Meteorology, Annual Climate Summaries. Bars above the zero line indicate warmer-than-average years. The dashed trendline shows a clear and statistically significant warming trajectory. 2019 remains one of Australia's two hottest years on record.</p>
+    </div>
+
+    <div class="chart-card">
+      <div class="chart-label">Climate–fire correlation &middot; Chart 11</div>
+      <div class="chart-title">Hotter Years, Bigger Burns — Temperature Anomaly vs. Forest Area Burnt (1999–2021)</div>
+      <div id="scatter2"></div>
+      <p class="chart-note">Source: BOM annual temperature anomalies joined with ABARES annual forest area burnt (south-eastern Australia). Each dot is one year, coloured by decade. The orange regression line shows the upward relationship between warmer years and larger burnt areas. The 2019–20 Black Summer is the clear outlier — both record heat and record fire.</p>
+    </div>
+
+    <div class="grid-2">
+      <div class="chart-card">
+        <div class="chart-label">Fire danger trend &middot; Chart 12</div>
+        <div class="chart-title">Average Annual Forest Fire Danger Index (FFDI) by Decade — South-Eastern Australia</div>
+        <div id="bar5"></div>
+        <p class="chart-note">Source: Bureau of Meteorology, FFDI climatology dataset. The Forest Fire Danger Index combines temperature, humidity, wind speed, and drought factor. An increasing FFDI means more days of dangerous fire weather each year.</p>
+      </div>
+      <div class="chart-card">
+        <div class="chart-label">Future outlook &middot; Chart 13</div>
+        <div class="chart-title">Projected Increase in Days with Extreme Fire Danger by 2050 (% change)</div>
+        <div id="bar6"></div>
+        <p class="chart-note">Source: CSIRO, <em>Climate Change in Australia</em> projections. Based on RCP 4.5 medium-emissions scenario. South-western and south-eastern Australia face the sharpest projected increases in extreme fire danger days.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════ FOOTER ═══ -->
+<footer>
+  <div class="footer-inner">
+    <h4>Data Sources</h4>
+    <ul>
+      <li>Australian Bureau of Agricultural and Resource Economics and Sciences (ABARES). <em>Fires in Australia's Forests 2016–21</em> (2024). Department of Agriculture, Fisheries and Forestry. <a href="https://www.agriculture.gov.au/abares/forestsaustralia/forest-data-maps-and-tools/data-by-topic/fire">agriculture.gov.au</a></li>
+      <li>Bureau of Meteorology (BOM). <em>Annual Climate Summary and Temperature Anomaly Data</em>. <a href="https://www.bom.gov.au/climate/change/">bom.gov.au/climate/change</a></li>
+      <li>Bureau of Meteorology (BOM). <em>Forest Fire Danger Index Climatology</em>. <a href="https://www.bom.gov.au/climate/maps/averages/bushfire/">bom.gov.au</a></li>
+      <li>Australasian Fire and Emergency Service Authorities Council (AFAC). <em>National Situation Reports 2019–20</em>.</li>
+      <li>NSW Rural Fire Service. <em>2019–20 Bush Fire Season Report</em>.</li>
+      <li>CSIRO. <em>Climate Change in Australia — Projections Technical Report</em>. <a href="https://www.climatechangeinaustralia.gov.au">climatechangeinaustralia.gov.au</a></li>
+      <li>Wintle, B. et al. (2020). <em>After the megafires: what next for Australian wildlife?</em> Trends in Ecology &amp; Evolution. WWF Australia, <em>3 Billion Animals</em> Report.</li>
+      <li>Geographic boundary data: Natural Earth (naturalearthdata.com), public domain.</li>
+    </ul>
+    <h4>Use of AI</h4>
+    <p>Claude (Anthropic) was used to assist HTML/CSS layout. All data values are sourced from the publications listed above.</p>
+    <h4>Author</h4>
+    <p>Created by Iskander Artygalin 35283947 &middot; FIT2179 Data Visualisation 2, Monash University &middot; May 2026</p>
+  </div>
+</footer>
+
+<script>
+// ════════════════════════════════════════════════════
+// SHARED VEGA-LITE CONFIG
+// ════════════════════════════════════════════════════
+const vlTheme = {
+  background: "transparent",
+  font: "Inter",
+  axis: {
+    labelColor: "#9a8f80", titleColor: "#9a8f80",
+    gridColor: "rgba(255,255,255,0.05)",
+    domainColor: "rgba(255,255,255,0.12)",
+    tickColor: "rgba(255,255,255,0.12)"
+  },
+  legend: { labelColor: "#9a8f80", titleColor: "#9a8f80" },
+  view: { stroke: null },
+  title: { color: "#e8e0d0" }
+};
+const opts = { actions: false, config: vlTheme };
+
+// ════════════════════════════════════════════════════
+// DATA
+// ════════════════════════════════════════════════════
+
+const stateData = [
+  { state: "New South Wales", abbr: "NSW", area: 5520, homes: 2448, lat: -32.2, lon: 147.0 },
+  { state: "Queensland",      abbr: "QLD", area: 1490, homes: 79,   lat: -22.5, lon: 144.0 },
+  { state: "Victoria",        abbr: "VIC", area: 1200, homes: 432,  lat: -37.0, lon: 144.5 },
+  { state: "South Australia", abbr: "SA",  area: 270,  homes: 206,  lat: -30.0, lon: 135.5 },
+  { state: "Western Australia",abbr:"WA",  area: 224,  homes: 10,   lat: -25.0, lon: 121.0 },
+  { state: "Australian Capital Territory", abbr: "ACT", area: 200, homes: 0, lat: -35.5, lon: 149.0 },
+  { state: "Tasmania",        abbr: "TAS", area: 50,   homes: 10,   lat: -42.0, lon: 146.5 }
+];
+
+const historicalData = [
+  {year:1999,area:850},{year:2000,area:620},{year:2001,area:740},{year:2002,area:980},
+  {year:2003,area:2800},{year:2004,area:800},{year:2005,area:650},{year:2006,area:1100},
+  {year:2007,area:950},{year:2008,area:550},{year:2009,area:430},{year:2010,area:280},
+  {year:2011,area:940},{year:2012,area:750},{year:2013,area:900},{year:2014,area:650},
+  {year:2015,area:780},{year:2016,area:610},{year:2017,area:1150},{year:2018,area:550},
+  {year:2019,area:7240},{year:2020,area:980},{year:2021,area:440}
+];
+
+const tempData = [
+  {year:2001,temp:0.25},{year:2002,temp:0.74},{year:2003,temp:0.55},{year:2004,temp:0.53},
+  {year:2005,temp:0.55},{year:2006,temp:0.60},{year:2007,temp:0.67},{year:2008,temp:0.38},
+  {year:2009,temp:0.71},{year:2010,temp:0.45},{year:2011,temp:-0.18},{year:2012,temp:0.47},
+  {year:2013,temp:0.48},{year:2014,temp:0.47},{year:2015,temp:0.83},{year:2016,temp:0.87},
+  {year:2017,temp:0.52},{year:2018,temp:1.14},{year:2019,temp:1.52},{year:2020,temp:1.15},
+  {year:2021,temp:0.56},{year:2022,temp:0.50},{year:2023,temp:1.53}
+];
+
+// Warming stripes: BOM annual mean anomaly 1950–2023 (°C vs 1961–1990 baseline)
+const warmingStripesData = [
+  {year:1950,temp:-0.28},{year:1951,temp:0.12},{year:1952,temp:-0.02},
+  {year:1953,temp:0.11},{year:1954,temp:-0.35},{year:1955,temp:-0.42},
+  {year:1956,temp:-0.49},{year:1957,temp:0.07},{year:1958,temp:0.08},
+  {year:1959,temp:0.14},{year:1960,temp:-0.04},{year:1961,temp:-0.04},
+  {year:1962,temp:-0.12},{year:1963,temp:0.02},{year:1964,temp:-0.22},
+  {year:1965,temp:0.00},{year:1966,temp:0.08},{year:1967,temp:-0.06},
+  {year:1968,temp:-0.11},{year:1969,temp:0.28},{year:1970,temp:-0.01},
+  {year:1971,temp:-0.23},{year:1972,temp:0.18},{year:1973,temp:-0.27},
+  {year:1974,temp:-0.55},{year:1975,temp:-0.44},{year:1976,temp:-0.12},
+  {year:1977,temp:0.18},{year:1978,temp:-0.05},{year:1979,temp:0.13},
+  {year:1980,temp:0.23},{year:1981,temp:0.35},{year:1982,temp:0.42},
+  {year:1983,temp:0.29},{year:1984,temp:0.04},{year:1985,temp:0.06},
+  {year:1986,temp:0.25},{year:1987,temp:0.39},{year:1988,temp:0.19},
+  {year:1989,temp:0.01},{year:1990,temp:0.35},{year:1991,temp:0.26},
+  {year:1992,temp:0.02},{year:1993,temp:0.08},{year:1994,temp:0.47},
+  {year:1995,temp:0.38},{year:1996,temp:0.24},{year:1997,temp:0.39},
+  {year:1998,temp:0.62},{year:1999,temp:0.17},{year:2000,temp:0.26},
+  {year:2001,temp:0.25},{year:2002,temp:0.74},{year:2003,temp:0.55},
+  {year:2004,temp:0.53},{year:2005,temp:0.55},{year:2006,temp:0.60},
+  {year:2007,temp:0.67},{year:2008,temp:0.38},{year:2009,temp:0.71},
+  {year:2010,temp:0.45},{year:2011,temp:-0.18},{year:2012,temp:0.47},
+  {year:2013,temp:0.48},{year:2014,temp:0.47},{year:2015,temp:0.83},
+  {year:2016,temp:0.87},{year:2017,temp:0.52},{year:2018,temp:1.14},
+  {year:2019,temp:1.52},{year:2020,temp:1.15},{year:2021,temp:0.56},
+  {year:2022,temp:0.50},{year:2023,temp:1.53}
+];
+
+// Joined scatter: BOM temperature anomaly × ABARES forest area burnt (SE Australia)
+const scatterData = [
+  {year:1999,temp:0.17,area:850,decade:"1999–2009"},
+  {year:2000,temp:0.26,area:620,decade:"1999–2009"},
+  {year:2001,temp:0.25,area:740,decade:"1999–2009"},
+  {year:2002,temp:0.74,area:980,decade:"1999–2009"},
+  {year:2003,temp:0.55,area:2800,decade:"1999–2009"},
+  {year:2004,temp:0.53,area:800,decade:"1999–2009"},
+  {year:2005,temp:0.55,area:650,decade:"1999–2009"},
+  {year:2006,temp:0.60,area:1100,decade:"1999–2009"},
+  {year:2007,temp:0.67,area:950,decade:"1999–2009"},
+  {year:2008,temp:0.38,area:550,decade:"1999–2009"},
+  {year:2009,temp:0.71,area:430,decade:"1999–2009"},
+  {year:2010,temp:0.45,area:280,decade:"2010–2018"},
+  {year:2011,temp:-0.18,area:940,decade:"2010–2018"},
+  {year:2012,temp:0.47,area:750,decade:"2010–2018"},
+  {year:2013,temp:0.48,area:900,decade:"2010–2018"},
+  {year:2014,temp:0.47,area:650,decade:"2010–2018"},
+  {year:2015,temp:0.83,area:780,decade:"2010–2018"},
+  {year:2016,temp:0.87,area:610,decade:"2010–2018"},
+  {year:2017,temp:0.52,area:1150,decade:"2010–2018"},
+  {year:2018,temp:1.14,area:550,decade:"2010–2018"},
+  {year:2019,temp:1.52,area:7240,decade:"2019–20 Black Summer"},
+  {year:2020,temp:1.15,area:980,decade:"2020–2021"},
+  {year:2021,temp:0.56,area:440,decade:"2020–2021"}
+];
+
+// Heatmap data
+const heatData = [];
+const stateList = ["NSW","VIC","SA","QLD","WA","TAS"];
+const monthList = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
+const dangerMatrix = {
+  NSW: [5,4,3,2,1,1,1,1,2,3,4,5],
+  VIC: [4,4,3,2,1,1,1,1,2,3,4,5],
+  SA:  [5,4,3,2,1,1,1,1,2,3,4,5],
+  QLD: [3,3,2,2,2,2,3,4,4,4,4,3],
+  WA:  [4,3,2,2,2,2,3,4,4,4,4,4],
+  TAS: [3,3,2,1,1,1,1,1,1,2,3,4]
+};
+stateList.forEach(s => monthList.forEach((m,i) =>
+  heatData.push({state:s, month:m, mo:i+1, danger:dangerMatrix[s][i]})));
+
+// ════════════════════════════════════════════════════
+// MAP 1 — Proportional Symbol Map
+// ════════════════════════════════════════════════════
+vegaEmbed('#map1', {
+  $schema: "https://vega.github.io/schema/vega-lite/v5.json",
+  width: "container", height: 370,
+  projection: { type: "mercator", center: [133, -27], scale: 680 },
+  layer: [
+    {
+      data: {
+        url: "https://raw.githubusercontent.com/nvkelso/natural-earth-vector/master/geojson/ne_50m_admin_1_states_provinces.geojson",
+        format: { type: "json", property: "features" }
+      },
+      transform: [{ filter: "datum.properties.admin === 'Australia'" }],
+      mark: { type: "geoshape", fill: "#1e2030", stroke: "#444", strokeWidth: 0.8 }
+    },
+    {
+      data: { values: stateData },
+      mark: { type: "circle", opacity: 0.82 },
+      encoding: {
+        latitude:  { field: "lat",  type: "quantitative" },
+        longitude: { field: "lon",  type: "quantitative" },
+        size: {
+          field: "area", type: "quantitative",
+          scale: { range: [80, 6000] },
+          legend: { title: "Area (000 ha)", titleFontSize: 10, labelFontSize: 10 }
+        },
+        color: {
+          field: "area", type: "quantitative",
+          scale: { range: ["#7a3010", "#c0392b", "#e8652a", "#ff9940", "#ffd080"] },
+          legend: null
+        },
+        tooltip: [
+          { field: "state", title: "State" },
+          { field: "area",  title: "Area burnt (000 ha)", format: "," },
+          { field: "homes", title: "Homes destroyed", format: "," }
+        ]
+      }
+    },
+    {
+      data: { values: stateData },
+      mark: { type: "text", fontSize: 10, fontWeight: "600", dy: -18, color: "#e8e0d0" },
+      encoding: {
+        latitude:  { field: "lat",  type: "quantitative" },
+        longitude: { field: "lon",  type: "quantitative" },
+        text:      { field: "abbr", type: "nominal" }
+      }
+    }
+  ]
+}, opts);
+
+// ════════════════════════════════════════════════════
+// CHART 1 — Horizontal Bar: State area burnt
+// ════════════════════════════════════════════════════
+vegaEmbed('#bar1', {
+  $schema: "https://vega.github.io/schema/vega-lite/v5.json",
+  width: "container", height: 280,
+  data: { values: stateData },
+  mark: { type: "bar", cornerRadiusEnd: 4 },
+  encoding: {
+    y: { field: "abbr", type: "nominal", sort: "-x", axis: { title: null, labelFontSize: 12 } },
+    x: { field: "area", type: "quantitative", axis: { title: "Thousand hectares", titleFontSize: 11 } },
+    color: {
+      field: "area", type: "quantitative",
+      scale: { range: ["#7a2810", "#c0392b", "#e8652a", "#ff9940", "#ffd080"] },
+      legend: null
+    },
+    tooltip: [
+      { field: "state", title: "State" },
+      { field: "area",  title: "Area burnt (000 ha)", format: "," }
+    ]
+  }
+}, opts);
+
+// ════════════════════════════════════════════════════
+// CHART 2 — Historical Line Chart
+// ════════════════════════════════════════════════════
+vegaEmbed('#line1', {
+  $schema: "https://vega.github.io/schema/vega-lite/v5.json",
+  width: "container", height: 320,
+  data: { values: historicalData },
+  layer: [
+    {
+      mark: {
+        type: "area",
+        line: { color: "#e8652a", strokeWidth: 2 },
+        color: { expr: "{'gradient':'linear','x1':0,'y1':0,'x2':0,'y2':1,'stops':[{'offset':0,'color':'rgba(232,101,42,0.38)'},{'offset':1,'color':'rgba(232,101,42,0.02)'}]}" }
+      },
+      encoding: {
+        x: { field: "year", type: "quantitative", axis: { format: "d", title: "Year", labelFontSize: 11 } },
+        y: { field: "area", type: "quantitative", axis: { title: "Thousand hectares", titleFontSize: 11 } }
+      }
+    },
+    {
+      mark: { type: "point", filled: true, size: 45, color: "#e8652a" },
+      encoding: {
+        x: { field: "year", type: "quantitative" },
+        y: { field: "area", type: "quantitative" },
+        tooltip: [
+          { field: "year", title: "Year", format: "d" },
+          { field: "area", title: "Area burnt (000 ha)", format: "," }
+        ]
+      }
+    },
+    {
+      transform: [{ filter: "datum.year === 2019" }],
+      mark: { type: "text", align: "left", dx: 8, dy: -12, color: "#ffd080", fontSize: 11, fontWeight: "bold" },
+      encoding: {
+        x: { field: "year", type: "quantitative" },
+        y: { field: "area", type: "quantitative" },
+        text: { value: "▶  Black Summer: 7.2M ha" }
+      }
+    },
+    {
+      transform: [{ filter: "datum.year === 2003" }],
+      mark: { type: "text", align: "left", dx: 8, dy: -10, color: "#a09080", fontSize: 10 },
+      encoding: {
+        x: { field: "year", type: "quantitative" },
+        y: { field: "area", type: "quantitative" },
+        text: { value: "2003 Canberra fires" }
+      }
+    }
+  ]
+}, opts);
+
+// ════════════════════════════════════════════════════
+// CHART 3 — Cumulative Area Chart (NSW Black Summer)
+// ════════════════════════════════════════════════════
+vegaEmbed('#area1', {
+  $schema: "https://vega.github.io/schema/vega-lite/v5.json",
+  width: "container", height: 250,
+  data: {
+    values: [
+      {month:"Aug 2019",area:50, o:1},{month:"Sep 2019",area:200,o:2},
+      {month:"Oct 2019",area:500,o:3},{month:"Nov 2019",area:1200,o:4},
+      {month:"Dec 2019",area:2800,o:5},{month:"Jan 2020",area:4500,o:6},
+      {month:"Feb 2020",area:5300,o:7},{month:"Mar 2020",area:5520,o:8}
+    ]
+  },
+  layer: [
+    {
+      mark: {
+        type: "area",
+        line: { color: "#c0392b", strokeWidth: 2.5 },
+        color: { expr: "{'gradient':'linear','x1':0,'y1':0,'x2':0,'y2':1,'stops':[{'offset':0,'color':'rgba(192,57,43,0.5)'},{'offset':1,'color':'rgba(192,57,43,0.03)'}]}" }
+      },
+      encoding: {
+        x: { field: "month", type: "ordinal", sort: { field: "o" }, axis: { title: null, labelAngle: -28, labelFontSize: 11 } },
+        y: { field: "area", type: "quantitative", axis: { title: "Thousand hectares (cumulative)", titleFontSize: 11 } }
+      }
+    },
+    {
+      mark: { type: "point", filled: true, size: 50, color: "#c0392b" },
+      encoding: {
+        x: { field: "month", type: "ordinal", sort: { field: "o" } },
+        y: { field: "area", type: "quantitative" },
+        tooltip: [
+          { field: "month", title: "Month" },
+          { field: "area", title: "Cumulative area (000 ha)", format: "," }
+        ]
+      }
+    }
+  ]
+}, opts);
+
+// ════════════════════════════════════════════════════
+// CHART 4 — 5-Year Season Comparison
+// ════════════════════════════════════════════════════
+vegaEmbed('#bar2', {
+  $schema: "https://vega.github.io/schema/vega-lite/v5.json",
+  width: "container", height: 250,
+  data: {
+    values: [
+      {season:"2016–17",area:3400,highlight:false},
+      {season:"2017–18",area:3100,highlight:false},
+      {season:"2018–19",area:5200,highlight:false},
+      {season:"2019–20",area:18600,highlight:true},
+      {season:"2020–21",area:2300,highlight:false}
+    ]
+  },
+  layer: [
+    {
+      mark: { type: "bar", cornerRadiusTopLeft: 3, cornerRadiusTopRight: 3 },
+      encoding: {
+        x: { field: "season", type: "ordinal", axis: { title: null, labelFontSize: 12 } },
+        y: { field: "area", type: "quantitative", axis: { title: "Thousand hectares (national)", titleFontSize: 11 } },
+        color: {
+          condition: { test: "datum.highlight", value: "#e8652a" },
+          value: "#3a2010"
+        },
+        tooltip: [
+          { field: "season", title: "Fire Season" },
+          { field: "area", title: "Area burnt (000 ha)", format: "," }
+        ]
+      }
+    },
+    {
+      transform: [{ filter: "datum.highlight" }],
+      mark: { type: "text", align: "center", dy: -10, color: "#ffd080", fontSize: 11, fontWeight: "bold" },
+      encoding: {
+        x: { field: "season", type: "ordinal" },
+        y: { field: "area", type: "quantitative" },
+        text: { value: "Black Summer" }
+      }
+    }
+  ]
+}, opts);
+
+// ════════════════════════════════════════════════════
+// CHART 5 — Heatmap: Fire danger by month × state
+// ════════════════════════════════════════════════════
+vegaEmbed('#heatmap1', {
+  $schema: "https://vega.github.io/schema/vega-lite/v5.json",
+  width: "container", height: 190,
+  data: { values: heatData },
+  mark: { type: "rect", stroke: "#0d0d0f", strokeWidth: 2, cornerRadius: 2 },
+  encoding: {
+    x: {
+      field: "month", type: "ordinal", sort: { field: "mo" },
+      axis: { title: null, labelFontSize: 11 }
+    },
+    y: {
+      field: "state", type: "nominal",
+      axis: { title: null, labelFontSize: 11 }
+    },
+    color: {
+      field: "danger", type: "quantitative",
+      scale: { domain: [1,5], range: ["#1a1a22","#5a2008","#a0380a","#e8652a","#ffd080"] },
+      legend: {
+        title: "Fire danger",
+        values: [1,2,3,4,5],
+        labelExpr: "datum.value===1?'Low':datum.value===2?'High':datum.value===3?'Very High':datum.value===4?'Severe':'Extreme'",
+        titleFontSize: 10, labelFontSize: 10
+      }
+    },
+    tooltip: [
+      { field: "state", title: "State" },
+      { field: "month", title: "Month" },
+      { field: "danger", title: "Danger (1=Low, 5=Extreme)" }
+    ]
+  }
+}, opts);
+
+// ════════════════════════════════════════════════════
+// CHART 6 — Fire incidents by month
+// ════════════════════════════════════════════════════
+vegaEmbed('#bar3', {
+  $schema: "https://vega.github.io/schema/vega-lite/v5.json",
+  width: "container", height: 210,
+  data: {
+    values: [
+      {month:"Jan",inc:420,o:1},{month:"Feb",inc:340,o:2},{month:"Mar",inc:210,o:3},
+      {month:"Apr",inc:95,o:4},{month:"May",inc:65,o:5},{month:"Jun",inc:48,o:6},
+      {month:"Jul",inc:52,o:7},{month:"Aug",inc:120,o:8},{month:"Sep",inc:280,o:9},
+      {month:"Oct",inc:390,o:10},{month:"Nov",inc:450,o:11},{month:"Dec",inc:510,o:12}
+    ]
+  },
+  mark: { type: "bar", cornerRadiusTopLeft: 2, cornerRadiusTopRight: 2 },
+  encoding: {
+    x: { field: "month", type: "ordinal", sort: { field: "o" }, axis: { title: null, labelFontSize: 11 } },
+    y: { field: "inc", type: "quantitative", axis: { title: "Avg. fire incidents", titleFontSize: 11 } },
+    color: {
+      field: "inc", type: "quantitative",
+      scale: { range: ["#1e1410","#5a2808","#b04010","#e8652a","#ffd080"] },
+      legend: null
+    },
+    tooltip: [
+      { field: "month", title: "Month" },
+      { field: "inc", title: "Avg. fire incidents", format: "," }
+    ]
+  }
+}, opts);
+
+// ════════════════════════════════════════════════════
+// CHART 7 — Homes destroyed
+// ════════════════════════════════════════════════════
+vegaEmbed('#dot1', {
+  $schema: "https://vega.github.io/schema/vega-lite/v5.json",
+  width: "container", height: 250,
+  data: { values: stateData },
+  mark: { type: "bar", cornerRadiusEnd: 4 },
+  encoding: {
+    y: { field: "abbr", type: "nominal", sort: "-x", axis: { title: null, labelFontSize: 12 } },
+    x: { field: "homes", type: "quantitative", axis: { title: "Homes destroyed", titleFontSize: 11 } },
+    color: {
+      field: "homes", type: "quantitative",
+      scale: { range: ["#3a1a0a","#8b2a0a","#c0392b","#e8652a"] },
+      legend: null
+    },
+    tooltip: [
+      { field: "state", title: "State" },
+      { field: "homes", title: "Homes destroyed", format: "," }
+    ]
+  }
+}, opts);
+
+// ════════════════════════════════════════════════════
+// CHART 8 — Wildlife impact
+// ════════════════════════════════════════════════════
+vegaEmbed('#bar4', {
+  $schema: "https://vega.github.io/schema/vega-lite/v5.json",
+  width: "container", height: 200,
+  data: {
+    values: [
+      {group:"Birds",   millions:2460},
+      {group:"Reptiles",millions:806},
+      {group:"Mammals", millions:143},
+      {group:"Frogs",   millions:51}
+    ]
+  },
+  mark: { type: "bar", cornerRadiusEnd: 4 },
+  encoding: {
+    y: { field: "group", type: "nominal", sort: "-x", axis: { title: null, labelFontSize: 12 } },
+    x: { field: "millions", type: "quantitative", axis: { title: "Millions of animals", titleFontSize: 11 } },
+    color: {
+      field: "group", type: "nominal",
+      scale: { range: ["#c0392b","#e8652a","#f0a030","#ffd080"] },
+      legend: null
+    },
+    tooltip: [
+      { field: "group", title: "Animal group" },
+      { field: "millions", title: "Est. millions affected", format: ",.0f" }
+    ]
+  }
+}, opts);
+
+// ════════════════════════════════════════════════════
+// CHART 9 — Temperature anomaly
+// ════════════════════════════════════════════════════
+vegaEmbed('#scatter1', {
+  $schema: "https://vega.github.io/schema/vega-lite/v5.json",
+  width: "container", height: 300,
+  data: { values: tempData },
+  layer: [
+    {
+      mark: { type: "bar", width: { band: 0.6 } },
+      encoding: {
+        x: { field: "year", type: "quantitative", axis: { format: "d", title: "Year", labelFontSize: 11 } },
+        y: { field: "temp", type: "quantitative", axis: { title: "Temperature anomaly (°C)", titleFontSize: 11 }, scale: { domain: [-0.5, 1.8] } },
+        color: {
+          condition: { test: "datum.temp >= 0", value: "#e8652a" },
+          value: "#4a90d9"
+        },
+        tooltip: [
+          { field: "year", title: "Year", format: "d" },
+          { field: "temp", title: "Anomaly (°C)", format: ".2f" }
+        ]
+      }
+    },
+    {
+      mark: { type: "rule", color: "rgba(255,255,255,0.18)", strokeDash: [4,4] },
+      encoding: { y: { datum: 0 } }
+    },
+    {
+      transform: [{ regression: "temp", on: "year" }],
+      mark: { type: "line", color: "#ffd080", strokeWidth: 2, strokeDash: [6,3] },
+      encoding: {
+        x: { field: "year", type: "quantitative" },
+        y: { field: "temp", type: "quantitative" }
+      }
+    },
+    {
+      transform: [{ filter: "datum.year === 2019" }],
+      mark: { type: "text", align: "right", dx: -4, dy: -12, color: "#ffd080", fontSize: 10, fontWeight: "bold" },
+      encoding: {
+        x: { field: "year", type: "quantitative" },
+        y: { field: "temp", type: "quantitative" },
+        text: { value: "2019: +1.52°C record" }
+      }
+    }
+  ]
+}, opts);
+
+// ════════════════════════════════════════════════════
+// CHART 10 — FFDI by decade
+// ════════════════════════════════════════════════════
+vegaEmbed('#bar5', {
+  $schema: "https://vega.github.io/schema/vega-lite/v5.json",
+  width: "container", height: 220,
+  data: {
+    values: [
+      {decade:"1970s",ffdi:14.2},{decade:"1980s",ffdi:15.8},
+      {decade:"1990s",ffdi:16.3},{decade:"2000s",ffdi:17.9},
+      {decade:"2010s",ffdi:19.4},{decade:"2020s*",ffdi:21.7}
+    ]
+  },
+  mark: { type: "bar", cornerRadiusTopLeft: 3, cornerRadiusTopRight: 3 },
+  encoding: {
+    x: { field: "decade", type: "ordinal", axis: { title: null, labelFontSize: 12 } },
+    y: { field: "ffdi", type: "quantitative", scale: { zero: false }, axis: { title: "Avg. annual FFDI", titleFontSize: 11 } },
+    color: {
+      field: "ffdi", type: "quantitative",
+      scale: { range: ["#3a2010","#6a3010","#a85020","#e8652a","#ff9940","#ffd080"] },
+      legend: null
+    },
+    tooltip: [
+      { field: "decade", title: "Decade" },
+      { field: "ffdi", title: "Avg. FFDI", format: ".1f" }
+    ]
+  }
+}, opts);
+
+// ════════════════════════════════════════════════════
+// CHART 11 — Projected change in extreme fire danger days
+// ════════════════════════════════════════════════════
+vegaEmbed('#bar6', {
+  $schema: "https://vega.github.io/schema/vega-lite/v5.json",
+  width: "container", height: 220,
+  data: {
+    values: [
+      {region:"SW Australia",   change:42},
+      {region:"SE Australia",   change:35},
+      {region:"Victoria",       change:31},
+      {region:"NSW Coast",      change:28},
+      {region:"Tasmania",       change:25},
+      {region:"QLD Coast",      change:18}
+    ]
+  },
+  mark: { type: "bar", cornerRadiusEnd: 4 },
+  encoding: {
+    y: { field: "region", type: "nominal", sort: "-x", axis: { title: null, labelFontSize: 11 } },
+    x: { field: "change", type: "quantitative", axis: { title: "% increase in extreme fire danger days", titleFontSize: 11 } },
+    color: {
+      field: "change", type: "quantitative",
+      scale: { range: ["#7a3010","#b05020","#e8652a","#ffd080"] },
+      legend: null
+    },
+    tooltip: [
+      { field: "region", title: "Region" },
+      { field: "change", title: "Projected increase (%)", format: ".0f" }
+    ]
+  }
+}, opts);
+
+// ════════════════════════════════════════════════════
+// CHART 9 — Climate Warming Stripes (custom rect grid, 1950–2023)
+// ════════════════════════════════════════════════════
+vegaEmbed('#stripes1', {
+  $schema: "https://vega.github.io/schema/vega-lite/v5.json",
+  width: "container", height: 140,
+  data: { values: warmingStripesData },
+  layer: [
+    {
+      mark: { type: "rect" },
+      encoding: {
+        x: {
+          field: "year", type: "ordinal",
+          axis: {
+            title: null,
+            labelExpr: "datum.value === 1950 || datum.value === 1970 || datum.value === 1990 || datum.value === 2010 || datum.value === 2023 ? datum.value : ''",
+            labelFontSize: 11, labelColor: "#9a8f80",
+            ticks: false, domain: false, labelPadding: 6
+          }
+        },
+        y: { value: 0 },
+        y2: { value: 140 },
+        color: {
+          field: "temp", type: "quantitative",
+          scale: {
+            domain: [-0.6, 0, 1.6],
+            range: ["#1a4a8c", "#f4ecd8", "#a01010"]
+          },
+          legend: {
+            title: "Anomaly (°C)",
+            titleFontSize: 10, labelFontSize: 10,
+            gradientLength: 140
+          }
+        },
+        tooltip: [
+          { field: "year", title: "Year" },
+          { field: "temp", title: "Anomaly (°C)", format: "+.2f" }
+        ]
+      }
+    },
+    {
+      transform: [{ filter: "datum.year === 2019" }],
+      mark: { type: "text", align: "center", baseline: "bottom", dy: -4, color: "#ffd080", fontSize: 11, fontWeight: "bold" },
+      encoding: {
+        x: { field: "year", type: "ordinal" },
+        y: { value: 0 },
+        text: { value: "2019 · +1.52°C" }
+      }
+    }
+  ]
+}, opts);
+
+// ════════════════════════════════════════════════════
+// CHART 11 — Scatter: Temperature anomaly vs Forest area burnt + regression
+// ════════════════════════════════════════════════════
+vegaEmbed('#scatter2', {
+  $schema: "https://vega.github.io/schema/vega-lite/v5.json",
+  width: "container", height: 360,
+  data: { values: scatterData },
+  layer: [
+    {
+      transform: [{ regression: "area", on: "temp" }],
+      mark: { type: "line", color: "#e8652a", strokeWidth: 2, strokeDash: [6,3], opacity: 0.7 },
+      encoding: {
+        x: { field: "temp", type: "quantitative" },
+        y: { field: "area", type: "quantitative" }
+      }
+    },
+    {
+      mark: { type: "circle", size: 140, opacity: 0.85, stroke: "#0d0d0f", strokeWidth: 1 },
+      encoding: {
+        x: {
+          field: "temp", type: "quantitative",
+          axis: { title: "Temperature anomaly (°C, vs 1961–1990)", titleFontSize: 11, labelFontSize: 11 },
+          scale: { domain: [-0.4, 1.7] }
+        },
+        y: {
+          field: "area", type: "quantitative",
+          axis: { title: "Forest area burnt (000 ha, SE Australia)", titleFontSize: 11, labelFontSize: 11 }
+        },
+        color: {
+          field: "decade", type: "nominal",
+          scale: {
+            domain: ["1999–2009", "2010–2018", "2020–2021", "2019–20 Black Summer"],
+            range: ["#7a8aa0", "#f0a030", "#c0392b", "#ffd080"]
+          },
+          legend: { title: "Period", titleFontSize: 10, labelFontSize: 10, orient: "top-left" }
+        },
+        tooltip: [
+          { field: "year", title: "Year" },
+          { field: "temp", title: "Anomaly (°C)", format: "+.2f" },
+          { field: "area", title: "Area burnt (000 ha)", format: "," },
+          { field: "decade", title: "Period" }
+        ]
+      }
+    },
+    {
+      transform: [{ filter: "datum.year === 2019" }],
+      mark: { type: "text", align: "right", baseline: "middle", dx: -12, color: "#ffd080", fontSize: 11, fontWeight: "bold" },
+      encoding: {
+        x: { field: "temp", type: "quantitative" },
+        y: { field: "area", type: "quantitative" },
+        text: { value: "◀  Black Summer 2019–20" }
+      }
+    }
+  ]
+}, opts);
+
+</script>
+</body>
+</html>
